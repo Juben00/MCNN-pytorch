@@ -52,8 +52,8 @@ class CrowdDataset(Dataset):
 
 # test code
 if __name__=="__main__":
-    img_root="D:\\workspaceMaZhenwei\\Shanghai_part_A\\train_data\\images"
-    gt_dmap_root="D:\\workspaceMaZhenwei\\Shanghai_part_A\\train_data\\ground_truth"
+    img_root="./data/train_data/images"
+    gt_dmap_root="./data/train_data/densitymaps"
     dataset=CrowdDataset(img_root,gt_dmap_root,gt_downsample=4)
     for i,(img,gt_dmap) in enumerate(dataset):
         # plt.imshow(img)

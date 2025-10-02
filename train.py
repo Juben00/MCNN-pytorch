@@ -14,16 +14,16 @@ if __name__=="__main__":
     device=torch.device("cuda")
     mcnn=MCNN().to(device)
     criterion=nn.MSELoss(size_average=False).to(device)
-    optimizer = torch.optim.SGD(mcnn.parameters(), lr=1e-6,
+    optimizer = torch.optim.SGD(mcnn.parameters(), lr=3e-5,
                                 momentum=0.95)
     
-    img_root='D:\\workspaceMaZhenwei\\GithubProject\\MCNN-pytorch\\data\\Shanghai_part_A\\train_data\\images'
-    gt_dmap_root='D:\\workspaceMaZhenwei\\GithubProject\\MCNN-pytorch\\data\\Shanghai_part_A\\train_data\\ground_truth'
+    img_root='./data/train_data/images'
+    gt_dmap_root='./data/train_data/densitymaps'
     dataset=CrowdDataset(img_root,gt_dmap_root,4)
     dataloader=torch.utils.data.DataLoader(dataset,batch_size=1,shuffle=True)
 
-    test_img_root='D:\\workspaceMaZhenwei\\GithubProject\\MCNN-pytorch\\data\\Shanghai_part_A\\test_data\\images'
-    test_gt_dmap_root='D:\\workspaceMaZhenwei\\GithubProject\\MCNN-pytorch\\data\\Shanghai_part_A\\test_data\\ground_truth'
+    test_img_root='./data/test_data/images'
+    test_gt_dmap_root='./data/test_data/densitymaps'
     test_dataset=CrowdDataset(test_img_root,test_gt_dmap_root,4)
     test_dataloader=torch.utils.data.DataLoader(test_dataset,batch_size=1,shuffle=False)
 
@@ -53,7 +53,7 @@ if __name__=="__main__":
         #print("epoch:",epoch,"loss:",epoch_loss/len(dataloader))
         epoch_list.append(epoch)
         train_loss_list.append(epoch_loss/len(dataloader))
-        torch.save(mcnn.state_dict(),'./checkpoints/epoch_'+str(epoch)+".param")
+        torch.save(mcnn.state_dict(),'./checkpoints/epoch_'+str(epoch)+".pth")
 
         mcnn.eval()
         mae=0

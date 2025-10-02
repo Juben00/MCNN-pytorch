@@ -60,8 +60,8 @@ def estimate_density_map(img_root,gt_dmap_root,model_param_path,index):
 
 if __name__=="__main__":
     torch.backends.cudnn.enabled=False
-    img_root='D:\\workspaceMaZhenwei\\MCNN-pytorch\\data\\Shanghai_part_A\\test_data\\images'
-    gt_dmap_root='D:\\workspaceMaZhenwei\\MCNN-pytorch\\data\\Shanghai_part_A\\test_data\\ground_truth'
-    model_param_path='D:\\workspaceMaZhenwei\\MCNN-pytorch\\checkpoints\\epoch_63.param'
+    img_root='./data/test_data/images'
+    gt_dmap_root='./data/test_data/densitymaps'
+    model_param_path='./checkpoints/epoch_1999.pth'
     # cal_mae(img_root,gt_dmap_root,model_param_path)
     # estimate_density_map(img_root,gt_dmap_root,model_param_path,3) 
